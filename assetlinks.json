@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.stratixlite.app",
+    "sha256_cert_fingerprints": [
+      "94:C0:2C:CA:BF:9A:E8:35:31:59:2E:8A:E3:B5:A2:DB:37:07:ED:57:4E:F0:1E:45:21:6B:55:6E:E5:15:7F:70"
+    ]
+  }
+}]

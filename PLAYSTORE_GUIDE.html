@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stratix — Play Store Complete Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace; background: #0e0e16; color: #e0e0e0; margin: 0; padding: 0; font-size: 14px; line-height: 1.7; }
+    header { background: #070810; border-bottom: 2px solid #F7C948; padding: 28px 24px; }
+    header h1 { color: #F7C948; margin: 0; font-size: 22px; }
+    header p  { color: #888; margin: 4px 0 0; font-size: 13px; }
+    .toc { background: #111120; border: 1px solid #2a2a40; border-radius: 8px; padding: 18px 24px; margin: 28px 24px; }
+    .toc h2 { font-size: 14px; color: #F7C948; margin: 0 0 10px; }
+    .toc a  { color: #7db9f5; text-decoration: none; font-size: 13px; }
+    .toc a:hover { text-decoration: underline; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 4px; }
+    .section { padding: 0 24px; margin-bottom: 48px; }
+    h2 { font-size: 18px; color: #F7C948; border-bottom: 1px solid #2a2a40; padding-bottom: 8px; margin-top: 0; }
+    h3 { font-size: 14px; color: #9be5c8; margin: 24px 0 8px; }
+    h4 { font-size: 13px; color: #ccc; margin: 16px 0 6px; }
+    p, li { color: #ccc; }
+    code { background: #1a1a2e; color: #f0c070; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-family: 'Courier New', monospace; }
+    pre {
+      background: #0d0d1a;
+      border: 1px solid #2a2a40;
+      border-left: 3px solid #F7C948;
+      border-radius: 6px;
+      padding: 16px 18px;
+      overflow-x: auto;
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 12px 0;
+      color: #c8e6c9;
+    }
+    pre .comment { color: #555; }
+    pre .cmd     { color: #80cbc4; }
+    pre .str     { color: #f48fb1; }
+    pre .key     { color: #ce93d8; }
+    .step-box {
+      background: #111120;
+      border: 1px solid #2a2a40;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    .step-num {
+      background: #F7C948;
+      color: #070810;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 8px;
+    }
+    .step-title { font-weight: 600; color: #eee; font-size: 14px; }
+    .badge { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .b-ok   { background: #1b4332; color: #52b788; }
+    .b-warn { background: #3a2000; color: #f0a500; }
+    .b-err  { background: #3b0000; color: #f06060; }
+    .b-info { background: #001a33; color: #60a0f0; }
+    .row { display: flex; gap: 8px; align-items: flex-start; margin: 6px 0; }
+    .tick { flex-shrink: 0; margin-top: 2px; }
+    .check-item { font-size: 13px; color: #ccc; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
+    th { background: #1a1a30; color: #F7C948; padding: 8px 10px; text-align: left; border-bottom: 1px solid #333; }
+    td { padding: 8px 10px; border-bottom: 1px solid #1e1e2e; vertical-align: top; color: #ccc; }
+    .tip { background: #0d1f12; border-left: 3px solid #52b788; padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #9be5a8; margin: 10px 0; }
+    .warn-box { background: #1f1400; border-left: 3px solid #f0a500; padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #f0c060; margin: 10px 0; }
+    .danger-box { background: #1f0000; border-left: 3px solid #f06060; padding: 10px 14px; border-radius: 0 6px 6px 0; font-size: 12px; color: #f08080; margin: 10px 0; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    .pill { background: #1a1a2e; border: 1px solid #333; border-radius: 99px; padding: 2px 10px; font-size: 11px; color: #aaa; }
+    footer { background: #070810; border-top: 1px solid #222; padding: 20px 24px; color: #555; font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Stratix — Play Store Complete Guide</h1>
+  <p>PWA Optimization · Icons · Screenshots · Privacy Policy · Store Listing · Bubblewrap TWA · Security · Final Checklist</p>
+</header>
+
+<div class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#s1">PWA Optimization</a></li>
+    <li><a href="#s2">Icons — All Required Sizes</a></li>
+    <li><a href="#s3">Screenshots for Play Store</a></li>
+    <li><a href="#s4">Play Store Listing Copy</a></li>
+    <li><a href="#s5">Bubblewrap TWA — Step by Step</a></li>
+    <li><a href="#s6">Security Review</a></li>
+    <li><a href="#s7">Final Checklist</a></li>
+  </ol>
+</div>
+
+
+<!-- ═══════════════════ SECTION 1 ═══════════════════ -->
+<div class="section" id="s1">
+<h2>1 — PWA Optimization</h2>
+
+<h3>1.1 manifest.json — Key Improvements Made</h3>
+<p>The updated <code>manifest.json</code> (included in this bundle) adds these critical fields:</p>
+<pre>
+<span class="comment">// New fields added vs original:</span>
+<span class="key">"id"</span>: <span class="str">"com.stratixlite.app"</span>,          <span class="comment">// stable identity for TWA matching</span>
+<span class="key">"start_url"</span>: <span class="str">"/?source=pwa"</span>,           <span class="comment">// track installs via UTM</span>
+<span class="key">"display_override"</span>: [<span class="str">"standalone"</span>, <span class="str">"minimal-ui"</span>],
+<span class="key">"shortcuts"</span>: [ ... 4 shortcuts ... ],  <span class="comment">// long-press quick actions</span>
+<span class="key">"share_target"</span>: { ... },               <span class="comment">// receive shares from other apps</span>
+<span class="key">"screenshots"</span>: [ ... 5 screenshots ]   <span class="comment">// shown in Play Store install sheet</span>
+</pre>
+
+<h3>1.2 PWA Installability Checklist</h3>
+<p>Chrome's installability requires ALL of these:</p>
+
+<div class="step-box">
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>HTTPS served</strong> — Firebase Hosting enforces this automatically.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>Service Worker registered</strong> — <code>sw.js</code> handles fetch and is registered in <code>index.html</code>.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>manifest.json linked</strong> — <code>&lt;link rel="manifest" href="/manifest.json"&gt;</code> in <code>&lt;head&gt;</code>.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>192×192 icon</strong> — included in manifest icons array with <code>purpose: "any"</code>.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>512×512 maskable icon</strong> — <code>icon-maskable-512.png</code> with safe zone content.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>start_url is within scope</strong> — <code>/?source=pwa</code> is within <code>scope: "/"</code>.</div></div>
+  <div class="row"><div class="tick">✅</div><div class="check-item"><strong>display: standalone</strong> — hides browser chrome for native feel.</div></div>
+  <div class="row"><div class="tick">⚠️</div><div class="check-item"><strong>beforeinstallprompt</strong> — add the snippet below to show a custom "Install App" button.</div></div>
+</div>
+
+<h3>1.3 Add Custom Install Prompt to index.html</h3>
+<p>Paste this near the bottom of <code>index.html</code> before <code>&lt;/body&gt;</code>:</p>
+<pre>
+<span class="comment">/* ── PWA Install Prompt ── */</span>
+let _deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  _deferredPrompt = e;
+  <span class="comment">// Show your custom install banner/button here</span>
+  document.getElementById('install-banner')?.classList.remove('hidden');
+});
+
+function triggerInstallPrompt() {
+  if (!_deferredPrompt) return;
+  _deferredPrompt.prompt();
+  _deferredPrompt.userChoice.then((choice) => {
+    if (choice.outcome === 'accepted') {
+      console.log('PWA installed');
+      document.getElementById('install-banner')?.classList.add('hidden');
+    }
+    _deferredPrompt = null;
+  });
+}
+
+window.addEventListener('appinstalled', () => {
+  console.log('App installed successfully');
+  document.getElementById('install-banner')?.classList.add('hidden');
+});
+
+<span class="comment">/* ── Service Worker: register + update detection ── */</span>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    .then((reg) => {
+      console.log('[SW] Registered:', reg.scope);
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+            <span class="comment">// New version available — show update toast</span>
+            if (typeof toast === 'function') {
+              toast('🔄 Update available — restart to apply', 'info', 8000);
+            }
+          }
+        });
+      });
+    })
+    .catch((err) => console.error('[SW] Registration failed:', err));
+}
+</pre>
+
+<h3>1.4 Service Worker Strategy (updated sw.js)</h3>
+<table>
+  <tr><th>Request type</th><th>Strategy</th><th>Why</th></tr>
+  <tr><td>HTML navigation (<code>navigate</code> mode)</td><td>Network-first → cache fallback</td><td>Always fresh HTML, works offline</td></tr>
+  <tr><td>Same-origin icons, manifests</td><td>Cache-first + background revalidate</td><td>Fast loads, auto-updates</td></tr>
+  <tr><td>CDN fonts/scripts (cdnjs, gstatic)</td><td>Cache-first + background revalidate</td><td>Fast, offline-capable</td></tr>
+  <tr><td>Firebase / Firestore / Razorpay</td><td>Network-only (bypassed)</td><td>Must never cache live API responses</td></tr>
+  <tr><td>POST / non-GET</td><td>Pass-through (not intercepted)</td><td>Form submissions, Razorpay checkout</td></tr>
+</table>
+
+</div>
+
+<!-- ═══════════════════ SECTION 2 ═══════════════════ -->
+<div class="section" id="s2">
+<h2>2 — Icons</h2>
+
+<h3>2.1 Required Sizes</h3>
+<table>
+  <tr><th>File</th><th>Size</th><th>Used for</th></tr>
+  <tr><td><code>icon-72.png</code></td><td>72×72</td><td>Android LDPI home screen</td></tr>
+  <tr><td><code>icon-96.png</code></td><td>96×96</td><td>Android MDPI / PWA shortcuts</td></tr>
+  <tr><td><code>icon-128.png</code></td><td>128×128</td><td>Chrome Web Store, desktop</td></tr>
+  <tr><td><code>icon-144.png</code></td><td>144×144</td><td>Windows pinned tiles</td></tr>
+  <tr><td><code>icon-152.png</code></td><td>152×152</td><td>iOS Safari bookmarks</td></tr>
+  <tr><td><code>icon-192.png</code></td><td>192×192</td><td><strong>Required</strong> for PWA install</td></tr>
+  <tr><td><code>icon-256.png</code></td><td>256×256</td><td>Android XXHDPI</td></tr>
+  <tr><td><code>icon-384.png</code></td><td>384×384</td><td>Android XXXHDPI</td></tr>
+  <tr><td><code>icon-512.png</code></td><td>512×512</td><td><strong>Required</strong> for Play Store listing</td></tr>
+  <tr><td><code>icon-maskable-512.png</code></td><td>512×512</td><td>Android adaptive icon (safe zone: inner 80%)</td></tr>
+  <tr><td><code>adaptive-icon-foreground.png</code></td><td>512×512</td><td>Android adaptive foreground layer (transparent bg)</td></tr>
+  <tr><td><code>adaptive-icon-background.png</code></td><td>512×512</td><td>Android adaptive background layer (solid navy)</td></tr>
+  <tr><td><code>favicon-32.png</code></td><td>32×32</td><td>Browser tab favicon</td></tr>
+  <tr><td><code>favicon-16.png</code></td><td>16×16</td><td>Browser tab favicon (small)</td></tr>
+</table>
+
+<h3>2.2 All icons are included in this bundle</h3>
+<p>Generated icons use the Stratix brand: <strong>navy #070810 background</strong>, <strong>golden #F7C948 S-mark</strong>. To regenerate from your own logo, run:</p>
+<pre>
+<span class="cmd">pip install Pillow</span>
+<span class="comment"># Place your 1024×1024 logo as icon-source.png, then:</span>
+<span class="cmd">python generate_icons.py</span>
+</pre>
+
+<h3>2.3 Favicon in index.html</h3>
+<p>Add these to <code>&lt;head&gt;</code> of <code>index.html</code>:</p>
+<pre>
+&lt;link rel=<span class="str">"icon"</span> type=<span class="str">"image/png"</span> sizes=<span class="str">"32x32"</span> href=<span class="str">"/icons/favicon-32.png"</span>&gt;
+&lt;link rel=<span class="str">"icon"</span> type=<span class="str">"image/png"</span> sizes=<span class="str">"16x16"</span> href=<span class="str">"/icons/favicon-16.png"</span>&gt;
+&lt;link rel=<span class="str">"apple-touch-icon"</span> sizes=<span class="str">"192x192"</span> href=<span class="str">"/icons/icon-192.png"</span>&gt;
+</pre>
+
+</div>
+
+<!-- ═══════════════════ SECTION 3 ═══════════════════ -->
+<div class="section" id="s3">
+<h2>3 — Screenshots for Play Store</h2>
+
+<p>Google Play requires <strong>2–8 screenshots</strong>. For phones: <strong>1080×1920 px</strong> (9:16 portrait). Take these 5:</p>
+
+<div class="step-box">
+  <div style="margin-bottom:14px">
+    <span class="step-num">1</span><span class="step-title">Dashboard — daily overview</span>
+    <p style="margin:6px 0 0;color:#999;font-size:12px">Show today's sales total, expenses, profit, and pending udhaar count. Best time: morning with a few transactions entered. <br>Save as: <code>screenshots/screen-dashboard.png</code></p>
+  </div>
+  <div style="margin-bottom:14px">
+    <span class="step-num">2</span><span class="step-title">Sales entry form</span>
+    <p style="margin:6px 0 0;color:#999;font-size:12px">Open the "Add Sale" sheet with amount, customer name, and category filled in. Shows the core action.<br>Save as: <code>screenshots/screen-sales.png</code></p>
+  </div>
+  <div style="margin-bottom:14px">
+    <span class="step-num">3</span><span class="step-title">GST Invoice — generated PDF preview</span>
+    <p style="margin:6px 0 0;color:#999;font-size:12px">Show a completed GST invoice with CGST/SGST breakdown. This is a high-value Pro feature.<br>Save as: <code>screenshots/screen-gst.png</code></p>
+  </div>
+  <div style="margin-bottom:14px">
+    <span class="step-num">4</span><span class="step-title">Udhaar / Customer ledger</span>
+    <p style="margin:6px 0 0;color:#999;font-size:12px">Show a list of customers with pending amounts in red. Highly relatable for shop owners.<br>Save as: <code>screenshots/screen-udhaar.png</code></p>
+  </div>
+  <div>
+    <span class="step-num">5</span><span class="step-title">Analytics — monthly chart</span>
+    <p style="margin:6px 0 0;color:#999;font-size:12px">Show bar chart of monthly sales vs expenses. Use a month with solid numbers for visual impact.<br>Save as: <code>screenshots/screen-analytics.png</code></p>
+  </div>
+</div>
+
+<h3>Screenshot tips</h3>
+<ul>
+  <li>Use <strong>real-looking demo data</strong> — not empty screens. Enter ₹15,000–50,000 sample transactions.</li>
+  <li>Set language to <strong>English</strong> for primary screenshots. Add Hindi/Malayalam set as secondary locale.</li>
+  <li>Take on a <strong>Pixel or Samsung flagship</strong> for clean hardware framing.</li>
+  <li>Use Chrome DevTools Device Toolbar (<kbd>F12</kbd> → Phone icon) at <strong>393×851</strong>, then screenshot.</li>
+  <li><strong>Feature graphic</strong> (1024×500, required): Create in Canva — navy background, golden "Stratix" logo centre, tagline "Your Business, Under Full Control" in white below.</li>
+</ul>
+
+</div>
+
+<!-- ═══════════════════ SECTION 4 ═══════════════════ -->
+<div class="section" id="s4">
+<h2>4 — Play Store Listing Copy</h2>
+
+<h3>App Name</h3>
+<pre>Stratix - Business Manager</pre>
+
+<h3>Short Description (80 chars max)</h3>
+<pre>Free business manager: GST invoices, sales, expenses & udhaar for India</pre>
+
+<h3>Full Description (4000 chars)</h3>
+<pre>
+Stratix is the complete business operating system built for Indian shop owners,
+traders, manufacturers, and small business entrepreneurs.
+
+Whether you run a kirana store, garment shop, hardware outlet, transport
+business, or any small business — Stratix puts your entire operation in
+one fast, offline-ready app.
+
+━━━━━━━━━━━━━━━━
+FREE FEATURES
+━━━━━━━━━━━━━━━━
+✅ Dashboard — See today's sales, expenses and profit at a glance
+✅ Sales Tracker — Record every sale with date, amount, customer, category
+✅ Expense Tracker — Log all expenses, track where money is going
+✅ Inventory Manager — Track stock, get low-stock alerts, manage items
+✅ Customer CRM — Manage your customers, add notes, track status
+✅ Udhaar Khata — Digital credit ledger for customer dues (like khata book)
+✅ Follow-up Reminders — Never forget to collect a payment
+✅ Multi-language — English, हिंदी, മലയാളം, தமிழ்
+✅ Works Offline — Full functionality without internet
+✅ No Ads — Clean, distraction-free business tool
+✅ Data Export — Download your data as CSV or JSON anytime
+
+━━━━━━━━━━━━━━━━
+LITE PRO — ₹99/month
+━━━━━━━━━━━━━━━━
+⚡ GST Invoice PDF — Professional CGST/SGST/IGST invoices with your logo
+⚡ POS Billing — Fast point-of-sale counter billing for retail shops
+⚡ WhatsApp Catalogue — Share your product list on WhatsApp in one tap
+⚡ UPI Payment Reminders — Send payment reminders with UPI link to customers
+⚡ Labour & Salary — Track worker attendance and calculate monthly wages
+⚡ WhatsApp Bill Sender — Send bills and receipts directly on WhatsApp
+⚡ GST Return Tracker — Track GSTR-1 filings and input tax credit
+⚡ Focus Mode — Distraction-free daily task tracking
+
+━━━━━━━━━━━━━━━━
+WHY STRATIX?
+━━━━━━━━━━━━━━━━
+🇮🇳 Made specifically for Indian businesses and GST compliance
+📵 Works fully offline — ideal for areas with poor internet
+🔒 Your data is yours — stored securely, never sold
+📤 Export anytime — CSV and PDF exports built in
+⚡ Lightning fast — loads in under 1 second
+🌙 Dark mode and light mode
+
+Stratix is trusted by shop owners, traders, and entrepreneurs across India
+for daily business tracking without the complexity of accounting software.
+
+Available free. No subscription required for core features.
+</pre>
+
+<h3>Category</h3>
+<pre>Business</pre>
+
+<h3>Tags / Keywords</h3>
+<div class="pill-row">
+  <span class="pill">business manager</span><span class="pill">GST invoice</span><span class="pill">udhaar</span><span class="pill">khata</span>
+  <span class="pill">sales tracker</span><span class="pill">expense tracker</span><span class="pill">inventory</span><span class="pill">kirana</span>
+  <span class="pill">shop owner</span><span class="pill">small business India</span><span class="pill">GST billing</span><span class="pill">daily accounts</span>
+  <span class="pill">profit loss</span><span class="pill">customer ledger</span><span class="pill">POS billing</span><span class="pill">vyapari</span>
+</div>
+
+<h3>Content Rating</h3>
+<pre>Everyone (3+) — no violence, no in-app purchases for core features</pre>
+
+<h3>Privacy Policy URL</h3>
+<pre>https://stratix-lite-17.web.app/privacy-policy.html</pre>
+
+</div>
+
+<!-- ═══════════════════ SECTION 5 ═══════════════════ -->
+<div class="section" id="s5">
+<h2>5 — Bubblewrap TWA: Complete Android Build Guide</h2>
+
+<h3>Prerequisites</h3>
+<ul>
+  <li>Node.js 18+ (<a href="https://nodejs.org">nodejs.org</a>)</li>
+  <li>Java JDK 17+ (<a href="https://adoptium.net">adoptium.net</a>)</li>
+  <li>Your Firebase-hosted URL live (e.g. <code>https://stratix-lite-17.web.app</code>)</li>
+  <li>SHA-256 cert fingerprint (generated in Step 4 below)</li>
+</ul>
+
+<h3>Step 1 — Install Bubblewrap CLI</h3>
+<pre>
+<span class="cmd">npm install -g @bubblewrap/cli</span>
+<span class="comment"># Verify installation</span>
+<span class="cmd">bubblewrap --version</span>
+</pre>
+
+<h3>Step 2 — Create a project folder and initialise TWA</h3>
+<pre>
+<span class="cmd">mkdir stratix-twa && cd stratix-twa</span>
+<span class="cmd">bubblewrap init --manifest https://stratix-lite-17.web.app/manifest.json</span>
+</pre>
+<p>Answer the prompts like this:</p>
+<pre>
+Domain:               stratix-lite-17.web.app
+Application name:     Stratix - Business Manager
+Short name:           Stratix
+Package ID:           com.stratixlite.app
+App version code:     1
+App version name:     1.0.0
+Display:              standalone
+Orientation:          portrait
+Theme colour:         #F7C948
+Background colour:    #070810
+Start URL:            /?source=pwa
+Icon URL:             https://stratix-lite-17.web.app/icons/icon-512.png
+Maskable icon URL:    https://stratix-lite-17.web.app/icons/icon-maskable-512.png
+Signing key path:     <span class="comment">press Enter for default (~/.android/stratix.keystore)</span>
+Signing key alias:    stratix-key
+</pre>
+
+<h3>Step 3 — Generate a signing key (first time only)</h3>
+<pre>
+<span class="comment"># Bubblewrap auto-generates one if you accept defaults.</span>
+<span class="comment"># Or generate manually with keytool:</span>
+<span class="cmd">keytool -genkeypair \
+  -v \
+  -keystore stratix-release.keystore \
+  -alias stratix-key \
+  -keyalg RSA \
+  -keysize 2048 \
+  -validity 10000 \
+  -storepass YOUR_STORE_PASSWORD \
+  -keypass YOUR_KEY_PASSWORD \
+  -dname "CN=Stratix, OU=App, O=StratixLite, L=Mumbai, ST=Maharashtra, C=IN"</span>
+
+<span class="comment"># ⚠️  BACK UP YOUR KEYSTORE FILE IMMEDIATELY</span>
+<span class="comment"># If you lose it, you can NEVER update the app on Play Store</span>
+<span class="comment"># Store it in: Google Drive + external hard drive + password manager</span>
+</pre>
+
+<h3>Step 4 — Get SHA-256 fingerprint</h3>
+<pre>
+<span class="cmd">bubblewrap fingerprint list</span>
+<span class="comment"># Output looks like:</span>
+<span class="comment"># SHA-256: AB:CD:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90</span>
+
+<span class="comment"># Alternative with keytool directly:</span>
+<span class="cmd">keytool -list -v \
+  -keystore stratix-release.keystore \
+  -alias stratix-key \
+  -storepass YOUR_STORE_PASSWORD</span>
+</pre>
+
+<h3>Step 5 — Paste fingerprint into assetlinks.json and redeploy</h3>
+<pre>
+<span class="comment">// assetlinks.json</span>
+[{
+  <span class="key">"relation"</span>: [<span class="str">"delegate_permission/common.handle_all_urls"</span>],
+  <span class="key">"target"</span>: {
+    <span class="key">"namespace"</span>: <span class="str">"android_app"</span>,
+    <span class="key">"package_name"</span>: <span class="str">"com.stratixlite.app"</span>,
+    <span class="key">"sha256_cert_fingerprints"</span>: [
+      <span class="str">"AB:CD:12:34:56:78:90:AB:CD:EF:..."</span>  <span class="comment">// ← paste real fingerprint here</span>
+    ]
+  }
+}]
+</pre>
+<pre>
+<span class="comment"># Redeploy to Firebase</span>
+<span class="cmd">firebase deploy --only hosting</span>
+
+<span class="comment"># Verify it works in browser:</span>
+<span class="comment"># https://stratix-lite-17.web.app/.well-known/assetlinks.json</span>
+</pre>
+
+<h3>Step 6 — Build the APK / AAB</h3>
+<pre>
+<span class="comment"># Build signed release APK</span>
+<span class="cmd">bubblewrap build</span>
+
+<span class="comment"># Output: app-release-signed.apk</span>
+<span class="comment"># For Play Store, prefer AAB (Android App Bundle):</span>
+<span class="cmd">bubblewrap build --skipPwaValidation</span>
+<span class="comment"># Bubblewrap 1.x outputs APK; use bundletool to convert or upload APK directly</span>
+</pre>
+
+<h3>Step 7 — Test the APK before uploading</h3>
+<pre>
+<span class="comment"># Install on a connected Android device (USB debugging on)</span>
+<span class="cmd">adb install app-release-signed.apk</span>
+
+<span class="comment"># Verify TWA is working (not showing browser bar):</span>
+<span class="comment"># 1. Open the app — no address bar = TWA working ✅</span>
+<span class="comment"># 2. Go offline — check offline page loads ✅</span>
+<span class="comment"># 3. Long-press app icon — check shortcuts appear ✅</span>
+</pre>
+
+<h3>Step 8 — Upload to Google Play Console</h3>
+<pre>
+1. Go to: https://play.google.com/console
+2. Create app → App name: "Stratix - Business Manager"
+3. Default language: English (India) — en-IN
+4. App type: App  |  Free or paid: Free
+5. Releases → Production → Create new release
+6. Upload app-release-signed.apk
+7. Release name: 1.0.0
+8. Fill: Store listing → Short desc, Full desc, Screenshots, Feature graphic
+9. Content rating → Complete questionnaire → Rating: Everyone
+10. Data safety → Fill Firebase, Razorpay, analytics sections
+11. Review → Submit
+</pre>
+
+<div class="tip">First review typically takes 3–7 business days for new developer accounts. Make sure your privacy policy URL is live before submitting.</div>
+
+</div>
+
+<!-- ═══════════════════ SECTION 6 ═══════════════════ -->
+<div class="section" id="s6">
+<h2>6 — Security Review</h2>
+
+<h3>6.1 Content Security Policy</h3>
+<p>Current CSP is good. Apply these improvements:</p>
+<pre>
+<span class="comment">&lt;!-- Replace the meta CSP with a HEADER-based CSP in firebase.json for stronger enforcement --&gt;</span>
+
+<span class="comment">// firebase.json — add to headers array:</span>
+{
+  <span class="key">"source"</span>: <span class="str">"**"</span>,
+  <span class="key">"headers"</span>: [{
+    <span class="key">"key"</span>: <span class="str">"Content-Security-Policy"</span>,
+    <span class="key">"value"</span>: "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com https://cdnjs.cloudflare.com https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://*.firebaseio.com https://*.googleapis.com wss://*.firebaseio.com; img-src 'self' data: https:; frame-src https://checkout.razorpay.com; base-uri 'self'; form-action 'self';"
+  }, {
+    <span class="key">"key"</span>: <span class="str">"X-Content-Type-Options"</span>,
+    <span class="key">"value"</span>: <span class="str">"nosniff"</span>
+  }, {
+    <span class="key">"key"</span>: <span class="str">"X-Frame-Options"</span>,
+    <span class="key">"value"</span>: <span class="str">"DENY"</span>
+  }, {
+    <span class="key">"key"</span>: <span class="str">"Referrer-Policy"</span>,
+    <span class="key">"value"</span>: <span class="str">"strict-origin-when-cross-origin"</span>
+  }, {
+    <span class="key">"key"</span>: <span class="str">"Permissions-Policy"</span>,
+    <span class="key">"value"</span>: <span class="str">"camera=(), microphone=(), geolocation=(self)"</span>
+  }]
+}
+</pre>
+
+<h3>6.2 Firestore Security — Status: ✅ Correct</h3>
+<p>The existing rules are correct. No changes needed:</p>
+<pre>
+<span class="comment">// firestore.rules — VERIFIED CORRECT</span>
+rules_version = <span class="str">'2'</span>;
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null
+                         && request.auth.uid == userId;
+    }
+    match /{document=**} {
+      allow read, write: if false;  <span class="comment">// block all other paths</span>
+    }
+  }
+}
+</pre>
+<div class="tip">Consider adding field-level validation: <code>request.resource.data.amount is number && request.resource.data.amount &gt; 0</code> to prevent data corruption.</div>
+
+<h3>6.3 Razorpay Payment Security</h3>
+<div class="warn-box"><strong>Current state:</strong> Payments are verified only on the client side via Razorpay's <code>handler</code> callback. A determined user could manipulate this.</div>
+<p>For production, add server-side verification using a Firebase Function:</p>
+<pre>
+<span class="comment">// functions/index.js</span>
+const functions = require('firebase-functions');
+const Razorpay  = require('razorpay');
+const crypto    = require('crypto');
+
+exports.verifyPayment = functions.https.onCall(async (data, context) => {
+  if (!context.auth) throw new functions.https.HttpsError('unauthenticated', 'Login required');
+
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = data;
+  const secret  = functions.config().razorpay.secret;
+  const hmac    = crypto.createHmac('sha256', secret);
+  hmac.update(razorpay_order_id + '|' + razorpay_payment_id);
+  const expected = hmac.digest('hex');
+
+  if (expected !== razorpay_signature) {
+    throw new functions.https.HttpsError('permission-denied', 'Payment verification failed');
+  }
+
+  <span class="comment">// Mark user as Pro in Firestore</span>
+  await admin.firestore()
+    .doc(`users/${context.auth.uid}/kv/plan`)
+    .set({ isPro: true, paymentId: razorpay_payment_id, ts: Date.now() });
+
+  return { success: true };
+});
+</pre>
+<pre>
+<span class="comment"># Set your Razorpay secret:</span>
+<span class="cmd">firebase functions:config:set razorpay.secret="YOUR_RAZORPAY_SECRET_KEY"</span>
+<span class="cmd">firebase deploy --only functions</span>
+</pre>
+
+<h3>6.4 Firebase API Key Restriction</h3>
+<p>Your Firebase API key is public in the HTML (this is normal for web). But restrict it in Google Cloud Console:</p>
+<pre>
+1. Go to: https://console.cloud.google.com/apis/credentials
+2. Click your Firebase Web API key
+3. Under "Application restrictions" → select "HTTP referrers"
+4. Add:  stratix-lite-17.web.app/*
+         *.stratix-lite-17.firebaseapp.com/*
+5. Under "API restrictions" → Restrict to Firebase APIs only
+6. Save
+</pre>
+
+<h3>6.5 Additional Hardening</h3>
+<table>
+  <tr><th>Issue</th><th>Action</th><th>Priority</th></tr>
+  <tr><td>No rate limiting on Firestore writes</td><td>Add Firestore rules: max writes per minute using <code>request.time</code></td><td><span class="badge b-warn">Medium</span></td></tr>
+  <tr><td>Client-side password hashing present but unused</td><td>Remove dead code (<code>hashPassword()</code> function)</td><td><span class="badge b-info">Low</span></td></tr>
+  <tr><td>No email verification required</td><td>Enable email verification in Firebase Auth console</td><td><span class="badge b-warn">Medium</span></td></tr>
+  <tr><td>localStorage data not encrypted</td><td>Acceptable for business data; add encryption only if storing auth tokens locally</td><td><span class="badge b-info">Low</span></td></tr>
+  <tr><td>jsPDF loaded from CDN</td><td>Add SRI hash: <code>integrity="sha384-..."</code> to the script tag</td><td><span class="badge b-warn">Medium</span></td></tr>
+</table>
+
+</div>
+
+<!-- ═══════════════════ SECTION 7 ═══════════════════ -->
+<div class="section" id="s7">
+<h2>7 — Final Checklist Before Publishing</h2>
+
+<h3>Code &amp; Assets</h3>
+<div class="row"><div class="tick">☐</div><div class="check-item">Replace <code>RAZORPAY_KEY_HERE</code> with real <code>rzp_live_…</code> key in index.html</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">All icons present in <code>/icons/</code> — sizes 72, 96, 128, 144, 152, 192, 256, 384, 512, maskable-512</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Favicon tags added to <code>&lt;head&gt;</code> in index.html</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Install prompt JS snippet added to index.html</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">5 screenshots taken at 1080×1920 in <code>/screenshots/</code></div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Feature graphic created at 1024×500 (Canva)</div></div>
+
+<h3>Firebase Hosting</h3>
+<div class="row"><div class="tick">☐</div><div class="check-item"><code>firebase.json</code> updated with security headers (CSP, X-Frame-Options, etc.)</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">App deployed: <code>firebase deploy</code></div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">App loads at <code>https://stratix-lite-17.web.app</code></div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Firestore security rules deployed (paste in Firebase Console)</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Privacy policy live at <code>/privacy-policy.html</code></div></div>
+
+<h3>PWA Checks</h3>
+<div class="row"><div class="tick">☐</div><div class="check-item">Chrome Lighthouse PWA audit → score 100 (run DevTools → Lighthouse)</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Service Worker shows "Activated and is running" in DevTools → Application</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Install icon appears in Chrome address bar</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">App works offline (disable network in DevTools, reload)</div></div>
+
+<h3>TWA / Android</h3>
+<div class="row"><div class="tick">☐</div><div class="check-item">SHA-256 fingerprint from keystore pasted into both <code>assetlinks.json</code> files</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item"><code>https://stratix-lite-17.web.app/.well-known/assetlinks.json</code> returns correct JSON</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">APK installs on Android device with no browser address bar</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">App shortcuts work (long-press icon)</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Keystore file backed up in 2+ safe locations</div></div>
+
+<h3>Play Console</h3>
+<div class="row"><div class="tick">☐</div><div class="check-item">Google Play Console account created and $25 registration fee paid</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">App listing: title, short desc, full desc, screenshots, feature graphic filled</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Privacy policy URL added</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Content rating questionnaire completed</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">Data safety section filled (Firebase, Razorpay, analytics declared)</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">APK uploaded to Production release track</div></div>
+<div class="row"><div class="tick">☐</div><div class="check-item">"Review release" → "Start rollout to Production" clicked</div></div>
+
+<div class="tip" style="margin-top:24px">
+  <strong>Expected review time:</strong> 3–7 days for a new developer account. For subsequent updates, typically 1–2 hours if the app has an established positive track record.
+</div>
+
+</div>
+
+<footer>
+  <p>Stratix Play Store Complete Guide — Generated April 2026</p>
+  <p>Firebase docs: firebase.google.com/docs &nbsp;|&nbsp; Bubblewrap: github.com/GoogleChromeLabs/bubblewrap &nbsp;|&nbsp; Play Console: play.google.com/console</p>
+</footer>
+
+</body>
+</html>
